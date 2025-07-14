@@ -18,31 +18,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id_bengkel'])) {
     $result = $stmt->get_result();
     $bengkel = $result->fetch_assoc();
 
-    // Simpan booking ke tabel booking (optional)
+    // Simpan booking ke tabel booking
     $stmt2 = $conn->prepare("INSERT INTO booking (email_user, id_bengkel, waktu_booking) VALUES (?, ?, NOW())");
     $stmt2->bind_param("si", $user_email, $id_bengkel);
     $stmt2->execute();
+
+    // Redirect ke halaman sukses
+    header("Location: ../pages/booking.php?id=" . $id_bengkel);
+    exit();
 } else {
     header("Location: cari.php");
     exit();
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Booking Sukses</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
-</head>
-<body>
-    <h2>Booking Berhasil!</h2>
-    <p>Anda telah berhasil booking di bengkel berikut:</p>
-    <ul>
-        <li><strong>Nama Bengkel:</strong> <?= $bengkel['nama']; ?></li>
-        <li><strong>Alamat:</strong> <?= $bengkel['alamat']; ?></li>
-    </ul>
-
-    <a href="cari.php">🔍 Cari Bengkel Lain</a> |
-    <a href="../logout.php">🚪 Logout</a>
-</body>
-</html>

@@ -20,26 +20,31 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
-::
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <title>Login Bengkel Online</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/style_login.css">
 </head>
 <body>
-    <div class="login-container">
-        <div class="login-box">
-            <h2>🔧 Login Bengkel Online</h2>
-            <?php if (isset($error)) echo "<p class='error-msg'>$error</p>"; ?>
-            <form method="POST">
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" name="login">Login</button>
-            </form>
-            <p class="note">Gunakan: <br><b>user@example.com</b><br><b>123456</b></p>
-        </div>
+  <div class="form-wrapper">
+    <div class="login-box-kip">
+      <h2 class="form-title">Login Bengkel Online</h2>
+      <?php if (isset($error)) echo "<p class='error-msg'>$error</p>"; ?>
+      <form method="POST">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" placeholder="user@example.com" required>
+
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" placeholder="Masukkan password" required>
+
+        <button type="submit" name="login">Login</button>
+        <p class="note">Belum punya akun? Hubungi admin bengkel.</p>
+      </form>
     </div>
+  </div>
 </body>
+
 </html>

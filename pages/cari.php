@@ -1,39 +1,55 @@
-<?php
-require_once '../includes/db.php';
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Cari Bengkel</title>    
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/cari.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <h1>🔧 Cari Bengkel</h1>
+    <p>Temukan bengkel terpercaya untuk kendaraanmu</p>
+  </header>
 
-if ($_POST['action'] == 'cari_bengkel') {
-    $lat_user = $_POST['latitude'];
-    $lon_user = $_POST['longitude'];
+  <div class="search-wrapper">
+    <form method="GET">
+      <input type="text" name="keyword" placeholder="Cari layanan..." class="search-input">
+      <select name="kategori" class="search-select">
+        <option value="">Semua Kategori</option>
+        <!-- kategori lainnya -->
+      </select>
+      <button type="submit" class="search-btn">Cari</button>
+    </form>
+  </div>
 
-    // Ambil semua bengkel dari DB
-    $sql = "SELECT * FROM bengkel";
-    $result = $conn->query($sql);
+  <a href="tambah_bengkel.php" class="btn-add">➕ Tambah Bengkel</a>
 
-    function hitungJarak($lat1, $lon1, $lat2, $lon2) {
-        $theta = $lon1 - $lon2;
-        $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +
-                cos(deg2rad($lat1)) * cos(deg2rad($lat2)) *
-                cos(deg2rad($theta));
-        $dist = acos($dist);
-        $dist = rad2deg($dist);
-        $miles = $dist * 60 * 1.1515;
-        return $miles * 1.609344; // km
-    }
+  <div class="grid-container">
+    <div class="card">
+      <img src="../assets/img/WhatsApp Image 2025-07-14 at 21.22.03.jpeg" alt="Bengkel Sejahtera" class="bengkel-img">
+        <h3>Bengkel Sejahtera</h3>
+          <p>📍 Jl. Kenangan No.1, Jakarta</p>
+            <a href="booking.php?id=1" class="btn-book">Booking</a>
+              <br><br>
+            <a href="edit.php?id=1" class="btn-edit">Edit</a>
+            <a href="delete.php?id=1" class="btn-delete" onclick="return confirm('Yakin mau hapus?')">Delete</a>
+    </div>
 
-    $output = "<h3>Daftar Bengkel Terdekat:</h3>";
-    while ($row = $result->fetch_assoc()) {
-        $jarak = hitungJarak($lat_user, $lon_user, $row['latitude'], $row['longitude']);
-        $output .= "<div>
-            <strong>{$row['nama']}</strong><br>
-            Alamat: {$row['alamat']}<br>
-            Jarak: " . round($jarak, 2) . " km<br>
-            <form method='POST' action='success.php'>
-                <input type='hidden' name='id_bengkel' value='{$row['id']}'>
-                <button type='submit'>Booking</button>
-            </form>
-            <hr>
-        </div>";
-    }
+    <div class="card">
+      <img src="../assets/img/WhatsApp Image 2025-07-14 at 21.20.31.jpeg" alt="Bengkel Sejahtera" class="bengkel-img">
+        <h3>Bengkel Sejahtera</h3>
+          <p>📍 Jl. Kenangan No.1, Jakarta</p>
+            <a href="booking.php?id=1" class="btn-book">Booking</a>
+              <br><br>
+            <a href="edit.php?id=1" class="btn-edit">Edit</a>
+            <a href="delete.php?id=1" class="btn-delete" onclick="return confirm('Yakin mau hapus?')">Delete</a>
+    </div>
 
-    echo $output;
-}
+
+    <!-- Tambahkan kartu bengkel lain -->
+  </div>
+</body>
+</html>

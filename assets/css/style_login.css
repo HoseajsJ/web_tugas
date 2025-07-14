@@ -1,0 +1,97 @@
+/* Global */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #fff8f1;
+}
+
+/* Container tengah */
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff8f1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400'%3E%3Cg fill='none' stroke='%23ffcc99' stroke-width='0.5'%3E%3Cpath d='M0 0L600 400M600 0L0 400'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
+
+/* Box login */
+.login-box-kip {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+/* Judul */
+.form-title {
+    color: #ff6600;
+    margin-bottom: 25px;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Label */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Input */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #fdfdfd;
+    transition: border 0.3s;
+}
+
+input:focus {
+    border-color: #ff6600;
+    outline: none;
+}
+
+/* Tombol */
+button {
+    margin-top: 25px;
+    width: 100%;
+    background-color: #ff6600;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #e95b00;
+}
+
+/* Error message */
+.error-msg {
+    background-color: #ffe6e6;
+    color: #b30000;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Note bawah */
+.note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: #666;
+    text-align: center;
+}
